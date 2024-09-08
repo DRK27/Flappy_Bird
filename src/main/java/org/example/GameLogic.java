@@ -7,23 +7,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class GameLogic {
-    private static final int GRAVITY = 1;
-    private int velocityX = -4;
+    int velocityX = -4;
     int velocityY = 0;
-    private int gravity = GRAVITY;
-
-    public boolean gameOver = false;
-    public double score = 0;
-
-    public Bird bird;
-    public ArrayList<Pipe> pipes = new ArrayList<>();
-    private int boardWidth;
-    private int boardHeight;
-    private int pipeWidth;
-    private int pipeHeight;
-    private int openingSpace;
-    private Image topPipeImg, bottomPipeImg;
-    private Random random = new Random();
+    boolean gameOver = false;
+    double score = 0;
+    Bird bird;
+    ArrayList<Pipe> pipes = new ArrayList<>();
+    int boardWidth, boardHeight, pipeWidth, pipeHeight, openingSpace;
+    Image topPipeImg, bottomPipeImg;
 
     public GameLogic(int boardWidth, int boardHeight, int birdWidth, int birdHeight, Image birdImg, int pipeWidth, int pipeHeight, int openingSpace, Image topPipeImg, Image bottomPipeImg) {
         this.bird = new Bird(boardWidth / 8, boardHeight / 2, birdWidth, birdHeight, birdImg);
@@ -37,7 +28,7 @@ public class GameLogic {
     }
 
     public void moveBird() {
-        velocityY += gravity;
+        velocityY += 1;
         bird.y += velocityY;
         bird.y = Math.max(bird.y, 0);
     }
@@ -50,12 +41,10 @@ public class GameLogic {
                 score += 0.5;
                 pipe.passed = true;
             }
-
             if (collision(bird, pipe)) {
                 gameOver = true;
             }
         }
-
         if (bird.y > boardHeight) {
             gameOver = true;
         }
