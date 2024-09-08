@@ -1,6 +1,6 @@
 package org.example;
 
-import java.awt.Image;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class GameLogic {
@@ -17,25 +17,8 @@ public class GameLogic {
     //            Image birdImg,
     //        this.bird = new Bird(boardWidth / 8, boardHeight / 2, birdWidth, birdHeight, birdImg);
 
-    public GameLogic(
-            int boardWidth,
-            int boardHeight,
-            int birdWidth,
-            int birdHeight,
-            Image birdImg,
-            int pipeWidth,
-            int pipeHeight,
-            int openingSpace,
-            Image topPipeImg,
-            Image bottomPipeImg) {
-
-        this.bird = new Bird(
-                boardWidth / 8,
-                boardHeight / 2,
-                birdWidth,
-                birdHeight,
-                birdImg);
-
+    public GameLogic(int boardWidth, int boardHeight, int birdWidth, int birdHeight, Image birdImg, int pipeWidth, int pipeHeight, int openingSpace, Image topPipeImg, Image bottomPipeImg) {
+        this.bird = new Bird(boardWidth / 8, boardHeight / 2, birdWidth, birdHeight, birdImg);
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
         this.pipeWidth = pipeWidth;
@@ -51,7 +34,6 @@ public class GameLogic {
         bird.y += velocityY;
         bird.y = Math.max(bird.y, 0);
     }
-
 
 
     public void movePipes() {
