@@ -52,12 +52,7 @@ public class GameLogic {
         bird.y = Math.max(bird.y, 0);
     }
 
-    private boolean collision(Bird bird, Pipe pipe) {
-        return bird.x < pipe.x + pipe.width &&
-                bird.x + bird.width > pipe.x &&
-                bird.y < pipe.y + pipe.height &&
-                bird.y + bird.height > pipe.y;
-    }
+
 
     public void movePipes() {
         for (Pipe pipe : pipes) {
@@ -67,7 +62,7 @@ public class GameLogic {
                 score += 0.5;
                 pipe.passed = true;
             }
-            if (collision(bird, pipe)) {
+            if (Collision.collision(bird, pipe)) {
                 gameOver = true;
             }
         }
