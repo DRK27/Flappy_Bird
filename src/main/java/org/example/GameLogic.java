@@ -1,23 +1,41 @@
 package org.example;
 
-import org.example.Bird;
-
 import java.awt.Image;
 import java.util.ArrayList;
-import java.util.Random;
 
 public class GameLogic {
     int velocityX = -4;
     int velocityY = 0;
     boolean gameOver = false;
     double score = 0;
-    Bird bird;
     ArrayList<Pipe> pipes = new ArrayList<>();
+    Bird bird;
     int boardWidth, boardHeight, pipeWidth, pipeHeight, openingSpace;
     Image topPipeImg, bottomPipeImg;
+    // В конструкторе добавить int birdWidth,
+    //            int birdHeight,
+    //            Image birdImg,
+    //        this.bird = new Bird(boardWidth / 8, boardHeight / 2, birdWidth, birdHeight, birdImg);
 
-    public GameLogic(int boardWidth, int boardHeight, int birdWidth, int birdHeight, Image birdImg, int pipeWidth, int pipeHeight, int openingSpace, Image topPipeImg, Image bottomPipeImg) {
-        this.bird = new Bird(boardWidth / 8, boardHeight / 2, birdWidth, birdHeight, birdImg);
+    public GameLogic(
+            int boardWidth,
+            int boardHeight,
+            int birdWidth,
+            int birdHeight,
+            Image birdImg,
+            int pipeWidth,
+            int pipeHeight,
+            int openingSpace,
+            Image topPipeImg,
+            Image bottomPipeImg) {
+
+        this.bird = new Bird(
+                boardWidth / 8,
+                boardHeight / 2,
+                birdWidth,
+                birdHeight,
+                birdImg);
+
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
         this.pipeWidth = pipeWidth;
@@ -26,6 +44,7 @@ public class GameLogic {
         this.topPipeImg = topPipeImg;
         this.bottomPipeImg = bottomPipeImg;
     }
+
 
     public void moveBird() {
         velocityY += 1;
