@@ -15,6 +15,13 @@ public class Bird {
         this.img = img;
     }
 
+    public boolean checkCollision(Pipe pipe) {
+        return this.x < pipe.x + pipe.width &&
+                this.x + this.width > pipe.x &&
+                this.y < pipe.y + pipe.height &&
+                this.y + this.height > pipe.y;
+    }
+
     public void resetPosition(int startY) {
         this.y = startY;
     }

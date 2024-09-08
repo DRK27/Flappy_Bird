@@ -38,7 +38,7 @@ public class GameLogic {
                 score += 0.5;
                 pipe.passed = true;
             }
-            if (Collision.collision(bird, pipe))  gameOver = true;
+            if (bird.checkCollision(pipe))  gameOver = true;
         }
         if (bird.y > boardHeight) gameOver = true;
     }
