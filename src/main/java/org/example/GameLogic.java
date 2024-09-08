@@ -52,6 +52,13 @@ public class GameLogic {
         bird.y = Math.max(bird.y, 0);
     }
 
+    private boolean collision(Bird bird, Pipe pipe) {
+        return bird.x < pipe.x + pipe.width &&
+                bird.x + bird.width > pipe.x &&
+                bird.y < pipe.y + pipe.height &&
+                bird.y + bird.height > pipe.y;
+    }
+
     public void movePipes() {
         for (Pipe pipe : pipes) {
             pipe.x += velocityX;
@@ -82,12 +89,5 @@ public class GameLogic {
 
         pipes.add(new Pipe(boardWidth, randomPipeY, pipeWidth, pipeHeight, topPipeImg));
         pipes.add(new Pipe(boardWidth, randomPipeY + pipeHeight + openingSpace, pipeWidth, pipeHeight, bottomPipeImg));
-    }
-
-    private boolean collision(Bird bird, Pipe pipe) {
-        return bird.x < pipe.x + pipe.width &&
-                bird.x + bird.width > pipe.x &&
-                bird.y < pipe.y + pipe.height &&
-                bird.y + bird.height > pipe.y;
     }
 }
