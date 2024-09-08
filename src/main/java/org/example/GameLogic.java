@@ -12,10 +12,6 @@ public class GameLogic {
     Bird bird;
     int boardWidth, boardHeight, pipeWidth, pipeHeight, openingSpace;
     Image topPipeImg, bottomPipeImg;
-    // В конструкторе добавить int birdWidth,
-    //            int birdHeight,
-    //            Image birdImg,
-    //        this.bird = new Bird(boardWidth / 8, boardHeight / 2, birdWidth, birdHeight, birdImg);
 
     public GameLogic(int boardWidth, int boardHeight, int birdWidth, int birdHeight, Image birdImg, int pipeWidth, int pipeHeight, int openingSpace, Image topPipeImg, Image bottomPipeImg) {
         this.bird = new Bird(boardWidth / 8, boardHeight / 2, birdWidth, birdHeight, birdImg);
@@ -28,13 +24,11 @@ public class GameLogic {
         this.bottomPipeImg = bottomPipeImg;
     }
 
-
     public void moveBird() {
         velocityY += 1;
         bird.y += velocityY;
         bird.y = Math.max(bird.y, 0);
     }
-
 
     public void movePipes() {
         for (Pipe pipe : pipes) {
@@ -44,13 +38,9 @@ public class GameLogic {
                 score += 0.5;
                 pipe.passed = true;
             }
-            if (Collision.collision(bird, pipe)) {
-                gameOver = true;
-            }
+            if (Collision.collision(bird, pipe))  gameOver = true;
         }
-        if (bird.y > boardHeight) {
-            gameOver = true;
-        }
+        if (bird.y > boardHeight) gameOver = true;
     }
 
     public void resetGame() {
