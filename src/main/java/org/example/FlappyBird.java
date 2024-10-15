@@ -56,10 +56,10 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
 
     private void draw(Graphics g) {
         g.drawImage(backgroundImg, 0, 0, getWidth(), getHeight(), this);
-        g.drawImage(gameLogic.bird.img, gameLogic.bird.x, gameLogic.bird.y, gameLogic.bird.width, gameLogic.bird.height, this);
+        g.drawImage(gameLogic.bird.img, gameLogic.bird.horizontal, gameLogic.bird.vertical, gameLogic.bird.width, gameLogic.bird.height, this);
 
         for (Pipe pipe : gameLogic.pipes) {
-            g.drawImage(pipe.img, pipe.x, pipe.y, pipe.width, pipe.height, this);
+            g.drawImage(pipe.img, pipe.horizontal, pipe.vertical, pipe.width, pipe.height, this);
         }
 
         g.setColor(Color.white);
@@ -90,7 +90,7 @@ public class FlappyBird extends JPanel implements ActionListener, KeyListener {
                 gameLogic.resetGame();
                 startGame();
             } else {
-                gameLogic.velocityY = -9;
+                gameLogic.speedVertical = -9;
             }
         }
     }

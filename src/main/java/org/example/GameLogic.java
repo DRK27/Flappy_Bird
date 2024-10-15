@@ -4,8 +4,8 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class GameLogic {
-    int velocityX = -4;
-    int velocityY = 0;
+    int speedHorizontal = -4;
+    int speedVertical = 0;
     boolean gameOver = false;
     double score = 0;
     ArrayList<Pipe> pipes = new ArrayList<>();
@@ -25,34 +25,34 @@ public class GameLogic {
     }
 
     public void moveBird() {
-        velocityY += 1;
-        bird.y += velocityY;
-        bird.y = Math.max(bird.y, 0);
+        speedVertical += 1;
+        bird.vertical += speedVertical;
+        bird.vertical = Math.max(bird.vertical, 0);
     }
 
     public void movePipes() {
         for (Pipe pipe : pipes) {
-            pipe.x += velocityX;
+            pipe.horizontal += speedHorizontal;
 
-            if (!pipe.passed && bird.x > pipe.x + pipe.width) {
+            if (!pipe.passed && bird.horizontal > pipe.horizontal + pipe.width) {
                 score += 0.5;
                 pipe.passed = true;
             }
             if (bird.checkCollision(pipe))  gameOver = true;
         }
-        if (bird.y > boardHeight) gameOver = true;
+        if (bird.vertical > boardHeight) gameOver = true;
     }
 
     public void resetGame() {
         bird.resetPosition(boardHeight / 2);
-        velocityY = 0;
+        speedVertical = 0;
         pipes.clear();
         gameOver = false;
         score = 0;
     }
 
     public void addPipe() {
-        int randomPipeY = (int) (velocityY - boardHeight / 4 - Math.random() * (pipeHeight / 2));
+        int randomPipeY = (int) (speedVertical - boardHeight / 4 - Math.random() * (pipeHeight / 2));
 
         pipes.add(new Pipe(boardWidth, randomPipeY, pipeWidth, pipeHeight, topPipeImg));
         pipes.add(new Pipe(boardWidth, randomPipeY + pipeHeight + openingSpace, pipeWidth, pipeHeight, bottomPipeImg));
