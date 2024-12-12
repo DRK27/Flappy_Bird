@@ -1,4 +1,6 @@
-package org.example;
+package org.example.ui;
+
+import org.example.logic.GameLogic;
 
 import javax.swing.*;
 import java.awt.*;
